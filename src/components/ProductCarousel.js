@@ -35,8 +35,8 @@ const ProductCarousel = ({ products }) => {
         indicators={true} // Optional: Disable the dots
         interval={null}
       >
-        {products.map((v) => {
-          return <Carousel.Item>{v}</Carousel.Item>;
+        {products.map((v, id) => {
+          return <Carousel.Item key={id}>{v}</Carousel.Item>;
         })}
       </Carousel>
 

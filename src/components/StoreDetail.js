@@ -8,6 +8,22 @@ import request from "@/utils/request";
 import ProductCarousel from "./ProductCarousel";
 import Head from "next/head";
 
+export async function getServerSideProps({ params }) {
+  const { slug } = params;
+  try {
+    const response = await request.get(`/store/${slug}`);
+    const store = response.data.data;
+
+    return {
+      props: { store },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+}
+
 const StoreDetail = () => {
   const { slug } = useParams(); // Get the store ID from the URL
   const [store, setStore] = useState(null); // Store data
