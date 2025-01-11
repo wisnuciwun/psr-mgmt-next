@@ -1,0 +1,31 @@
+{
+    "theme_color": "#faf7f7",
+    "background_color": "#faf7f7",
+    "display": "standalone",
+    "start_url": ".",
+    "name": "Baraya Swarga",
+    "short_name": "Baraya Swarga",
+    "description": "Selamat datang di website Baraya Swarga ! Baraya Swarga adalah platform manajemen yang dirancang khusus untuk memenuhi kebutuhan khusus warga PSR. Di sini, kami menyediakan informasi lengkap tentang layanan, acara komunitas, pengelolaan fasilitas, dan pembaruan penting lainnya. Situs web ini merupakan pintu gerbang utama bagi penghuni kami untuk mengakses segala hal yang perlu mereka ketahui tentang kehidupan di Prima Swarga Residence.",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

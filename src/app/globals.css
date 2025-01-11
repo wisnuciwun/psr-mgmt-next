@@ -1,0 +1,272 @@
+@font-face {
+  font-family: "aquas";
+  src: url("../../public/aquawax/Montserrat-VariableFont_wght.ttf");
+}
+
+body {
+  font-family: "aquas", "Segoe UI", "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.aquas {
+  font-family: "aquas" !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app {
+  display: table;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #ffffff !important;
+  position: relative;
+  overflow-y: auto;
+  padding-bottom: 125px;
+}
+
+.app-full {
+  min-height: 100vh;
+  height: 100%;
+  background-color: #ffffff !important;
+  position: relative;
+  overflow-y: auto;
+  padding-bottom: 125px;
+}
+
+.full-screen {
+  display: flex;
+  width: 100%;
+}
+
+.screen {
+  width: clamp(375px, 100vw, 500px);
+  padding-bottom: 50px;
+}
+
+.font-lg {
+  font-size: 18px;
+}
+
+.font-xs {
+  font-size: 8px;
+}
+
+.font-sm {
+  font-size: 10px;
+}
+
+.font-md {
+  font-size: 14px;
+}
+
+.font-xl {
+  font-size: 26px;
+}
+
+.font-lg {
+  font-size: 18px;
+}
+
+.weight-xs {
+  font-weight: 100;
+}
+
+.weight-sm {
+  font-weight: 300;
+}
+
+.weight-md {
+  font-weight: 400;
+}
+
+.weight-lg {
+  font-weight: 500;
+}
+
+.weight-xl {
+  font-weight: 700;
+}
+
+.input-no-decoration {
+  background: none !important;
+  border: 0.5px solid #495057 !important;
+}
+
+.icon-suffix2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 38px;
+  margin-right: 13px;
+}
+
+.icon-suffix {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 42px;
+  margin-right: 10px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bg-primary-green {
+  background-color: #36a054 !important;
+}
+
+.bg-secondary-yellow {
+  background-color: #ffd46d !important;
+}
+
+.bg-primary-yellow {
+  background-color: #fec439;
+}
+
+.bg-selected-menu {
+  border-radius: 8px;
+  background-color: #fec439;
+  padding: 12px !important;
+}
+
+.no-outline:focus,
+.no-outline:active:focus,
+.no-outline.active:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary-yellow {
+  background-color: #fec439 !important;
+  border-radius: 96px !important;
+  color: white;
+  border: none !important;
+  height: fit-content !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  height: 40px !important;
+}
+
+.btn-primary-red {
+  background-color: #fce4e4 !important;
+  border-radius: 96px !important;
+  color: #cc3f3f !important;
+  border: none !important;
+  height: fit-content !important;
+  font-size: 14px !important;
+  height: 40px !important;
+}
+
+.btn-primary-red:disabled {
+  background-color: #495057 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary-white {
+  background-color: white !important;
+  border-radius: 96px !important;
+  color: #fec439 !important;
+  border: 1.5px solid #fec439 !important;
+  height: 40px !important;
+}
+
+.btn-primary-light {
+  background-color: white !important;
+  border-radius: 96px !important;
+  color: black !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+  height: 40px !important;
+}
+
+.line-thin {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.border-top-collapse {
+  border-top: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.flex-break {
+  flex-basis: 100%;
+}
+
+.font-weight-bold {
+  font-weight: 500 !important;
+}
+
+.color-primary-yellow {
+  color: #fec439;
+  text-decoration: none;
+}
+
+.color-primary-green {
+  color: #36a054;
+  text-decoration: none;
+}
+
+.important {
+  color: red;
+}
+
+.accordion-button:not(.collapsed) {
+  color: white !important;
+  background-color: #36a054 !important;
+  border-radius: 8px 8px 0px 0px !important;
+  outline: none !important;
+}
+
+.accordion-button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
+/* .accordion-button:before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#000000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+} */
+
+.btn-yellow-admin {
+  background-color: #fec439 !important;
+  color: white;
+  border: none !important;
+  height: fit-content !important;
+  font-size: 14px !important;
+  height: 40px !important;
+}
+
+.custom-backdrop{
+  background-color: black !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.form-control{
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 36px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.form-control:focus {
+  border-color: #fec439 !important;
+  box-shadow: 0 0 5px #fec439 !important;
+}
+
+.flex-scrollable {
+  display: flex;
+    flex-direction: row; /* Horizontal flex container */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    width: 100%; 
+    /* gap: 10px; */
+}
