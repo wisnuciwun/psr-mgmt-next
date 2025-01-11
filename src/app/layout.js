@@ -28,6 +28,15 @@ export default function RootLayout({ children }) {
           href="./fontawesome/css/font-awesome.min.css"
           precedence="default"
         />
+        <title>Baraya Swarga</title>
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/NpT4PDR/Baraya-Swarga-logo-MQ.jpg"
+        />
+        <meta
+          name="description"
+          content="Selamat datang di Prima Swarga Residence. Guyub kana kasaean !"
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} screen`}>
         <HomeNavbar />

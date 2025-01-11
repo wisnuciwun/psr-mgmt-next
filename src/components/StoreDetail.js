@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
-import { Helmet } from "react-helmet";
 import { useParams } from "next/navigation";
 import request from "@/utils/request";
 import ProductCarousel from "./ProductCarousel";
+import Head from "next/head";
 
 const StoreDetail = () => {
   const { slug } = useParams(); // Get the store ID from the URL
@@ -71,12 +71,12 @@ const StoreDetail = () => {
 
   return (
     <div className="container mt-4">
-      <Helmet>
+      <Head>
         <title>{store.store_name}</title>
         <meta name="description" content={store.description} />
         <meta property="og:title" content={store.store_name} />
         <meta property="og:description" content={store.description} />
-        {store.product_images_url != null && store.product_images_url != "" && (
+        {store.product_images_url && (
           <meta
             property="og:image"
             content={`https://wisnuadiwardhana.my.id/psr/img/${store.product_images_url
@@ -88,7 +88,7 @@ const StoreDetail = () => {
           property="og:url"
           content={`https://barayaswarga.com/lapak/${store.slug}`}
         />
-      </Helmet>
+      </Head>
       <Card>
         <Card.Header>
           <h3>{store.store_name}</h3>

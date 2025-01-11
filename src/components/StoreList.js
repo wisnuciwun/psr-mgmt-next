@@ -10,9 +10,9 @@ import {
   Card,
   Spinner,
 } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 import { useRouter } from "next/navigation";
 import request from "@/utils/request";
+import Head from "next/head";
 
 const StoreList = () => {
   const navigate = useRouter();
@@ -42,7 +42,7 @@ const StoreList = () => {
 
   return (
     <div className="container mt-2">
-      <Helmet>
+      <Head>
         <title>Jajanan PSR</title>
         <meta
           name="description"
@@ -57,7 +57,7 @@ const StoreList = () => {
           property="og:url"
           content={`https://barayaswarga.com/jajanan-psr`}
         />
-      </Helmet>
+      </Head>
       <h1>Lapak Prima Swarga Residence</h1>
       <span className="mb-4 text-muted font-md">
         Ngga usah jauh-jauh keluar rumah, nggak usah pusing cari di internet.
