@@ -9,6 +9,7 @@ import {
   FormControl,
   Button,
   Alert,
+  Spinner,
 } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
@@ -24,6 +25,7 @@ const StoreForm = () => {
     tags: "",
     product_images: null,
   });
+  const [loading, setloading] = useState(false);
 
   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState({});
@@ -72,6 +74,7 @@ const StoreForm = () => {
 
     if (images.length <= 4) {
       try {
+        setloading(true);
         const response = await axios.post(
           "https://wisnuadiwardhana.my.id/psr/save-store",
           data,
@@ -82,6 +85,7 @@ const StoreForm = () => {
           }
         );
         if (response.data.success) {
+          setloading(false);
           toast("Lapak berhasil dibuat!");
           setFormData({
             store_name: "",
@@ -95,6 +99,7 @@ const StoreForm = () => {
           navigate.push(`/lapak/${response.data.data.slug}`);
         }
       } catch (error) {
+        setloading(false);
         toast("Terjadi kesalahan");
         if (error.response && error.response.data.errors) {
           setErrors(error.response.data.errors); // Capture validation errors from Laravel
@@ -247,8 +252,13 @@ const StoreForm = () => {
         variant="primary"
         className="w-100 btn-primary-yellow"
         type="submit"
+        disabled={loading}
       >
-        Simpan
+        {loading ? (
+          <Spinner size="sm" style={{ color: "white" }} color="white" />
+        ) : (
+          "Simpan"
+        )}
       </Button>
     </Form>
   );
