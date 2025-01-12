@@ -77,9 +77,12 @@ const StoreList = () => {
         {stores.length > 0 ? (
           stores.map((store) => (
             <Col xs={6} key={store.id}>
-              <Card onClick={() => navigate.push(`/lapak/${store.slug}`)}>
-                <Card.Body>
-                  <p
+              <Card
+                onClick={() => navigate.push(`/lapak/${store.slug}`)}
+                className="h-100"
+              >
+                <Card.Body className="d-flex flex-column">
+                  <div
                     style={{
                       display: "-webkit-box",
                       WebkitBoxOrient: "vertical",
@@ -88,23 +91,27 @@ const StoreList = () => {
                     }}
                   >
                     {store.store_name}
-                  </p>
-                  {store.product_images_url != null &&
+                  </div>
+                  {store.product_images_url &&
                     store.product_images_url != "" && (
-                      <img
-                        src={`https://wisnuadiwardhana.my.id/psr/img/${store.product_images_url
-                          .split(",")[0]
-                          .replace("public/images/", "")}`}
-                        style={{
-                          width: "100%",
-                          objectFit: "fill",
-                          maxHeight: 150,
-                          borderRadius: 4,
-                        }}
-                      />
+                      <div className="mt-3">
+                        <img
+                          src={`https://wisnuadiwardhana.my.id/psr/img/${store.product_images_url
+                            .split(",")[0]
+                            .replace("public/images/", "")}`}
+                          style={{
+                            width: "100%",
+                            objectFit: "fill",
+                            maxHeight: 150,
+                            borderRadius: 4,
+                          }}
+                          loading="lazy"
+                          alt="Product"
+                        />
+                      </div>
                     )}
                   <div
-                    className="d-flex align-items-center justify-content-end mt-2"
+                    className="d-flex align-items-center justify-content-end mt-auto"
                     style={{ textAlign: "right" }}
                   >
                     <i
