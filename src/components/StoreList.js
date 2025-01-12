@@ -41,7 +41,7 @@ const StoreList = () => {
 
   return (
     <div className="container mt-2">
-      <h1>Lapak Prima Swarga Residence</h1>
+      <h4>Lapak Prima Swarga Residence</h4>
       <span className="mb-4 text-muted font-md">
         Ngga usah jauh-jauh keluar rumah, nggak usah pusing cari di internet.
         Disini, semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua

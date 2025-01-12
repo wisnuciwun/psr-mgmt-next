@@ -107,7 +107,7 @@ const StoreForm = () => {
   return (
     <Form onSubmit={handleSubmit} className="ps-3 pe-3">
       <Toaster />
-      <h1 className="mb-3">Buat Lapak Baru</h1>
+      <h4 className="mb-3">Buat Lapak Baru</h4>
       <FormGroup className="mb-3">
         <FormLabel>
           Nama Lapak <span style={{ color: "red" }}>*</span>
