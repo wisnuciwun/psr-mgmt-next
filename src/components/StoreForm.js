@@ -100,7 +100,13 @@ const StoreForm = () => {
         }
       } catch (error) {
         setloading(false);
-        toast("Terjadi kesalahan");
+        toast(
+          `Terjadi kesalahan ${
+            error.response.data.error
+              ? error.response.data.error.substring(0, 75)
+              : ""
+          }`
+        );
         if (error.response && error.response.data.errors) {
           setErrors(error.response.data.errors); // Capture validation errors from Laravel
         }
@@ -123,6 +129,7 @@ const StoreForm = () => {
           name="store_name"
           value={formData.store_name}
           required
+          maxLength={255}
           onChange={handleChange}
           isInvalid={!!errors.store_name}
           placeholder="Contoh: Snack Asik"
@@ -140,6 +147,7 @@ const StoreForm = () => {
           type="text"
           name="owner"
           value={formData.owner}
+          maxLength={100}
           required
           onChange={handleChange}
           isInvalid={!!errors.owner}
@@ -199,6 +207,7 @@ const StoreForm = () => {
           required
           onChange={handleChange}
           style={{ height: 400 }}
+          maxLength={5000}
           isInvalid={!!errors.description}
           placeholder="Deskripsi bisa menggunakan teks yang di-share di grup whatsapp"
         />
@@ -215,6 +224,7 @@ const StoreForm = () => {
           value={formData.tags}
           onChange={handleChange}
           isInvalid={!!errors.tags}
+          max={150}
           placeholder="Contoh: #seblak #pedes #baso"
         />
         <FormControl.Feedback type="invalid">
@@ -243,8 +253,10 @@ const StoreForm = () => {
           {errors.product_images}
         </FormControl.Feedback>
         <span className="font-sm" style={{ color: "red" }}>
-          *Maksimal 4 foto, yang pertama menjadi foto utama. Upload hanya dari
-          gallery, tidak bisa dari kamera
+          *Maksimal 4 foto, foto pertama menjadi foto utama. Upload tidak bisa
+          dari kamera. Jika terjadi error, coba screenshoot foto yang mau
+          diupload, kemudian upload foto screenshoot tersebut agar ukurannya
+          lebih kecil.
         </span>
       </FormGroup>
 
