@@ -48,7 +48,7 @@ export default function Home() {
                     <div style={{ color: "black", textDecoration: "none" }}>
                       <div className="d-flex justify-content-center">
                         <Button
-                          onClick={() => nav.push("/berita/${v.id}")}
+                          onClick={() => nav.push(`/berita/${v.id}`)}
                           className="w-100 btn-light"
                         >
                           <span>

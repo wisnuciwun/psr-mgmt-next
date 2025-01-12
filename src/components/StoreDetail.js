@@ -79,13 +79,22 @@ const StoreDetail = () => {
         </Card.Header>
         <ProductCarousel products={slides} />
         <Card.Body>
-          <Card.Text>{store.description}</Card.Text>
+          <Card.Text>
+            {store.description.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </Card.Text>
+          <hr />
           <Card.Text className="font-md">
-            Posting oleh <strong> {store.owner} </strong> ({store.address})
+            Diposting oleh <strong> {store.owner} </strong> ({store.address})
           </Card.Text>
           <Card.Text className="font-md" style={{ marginTop: -10 }}>
             {store.tags}
           </Card.Text>
+          <hr />
           <a
             href={`https://api.whatsapp.com/send?phone=${store.phone}&text=Assalamu'alaikum kak ${store.owner}. Jualan kah hari ini? Saya mau pesan ...`}
             target="_blank"

@@ -4,7 +4,6 @@ import React from "react";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  console.log("zzz", slug);
   try {
     const response = await request.get(`/store/${slug}`);
     const store = response.data.data;

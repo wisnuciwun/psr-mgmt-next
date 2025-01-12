@@ -57,7 +57,7 @@ const Contacts = () => {
             />
           </Col>
         </FormGroup>
-        <FormGroup className="mb-2" row>
+        <FormGroup className="mb-2">
           <FormLabel className="mb-1" htmlFor="exampleText" sm={2}>
             Pesan
           </FormLabel>
@@ -73,7 +73,7 @@ const Contacts = () => {
             />
           </Col>
         </FormGroup>
-        <FormGroup className="mb-2" row>
+        <FormGroup className="mb-2">
           <Col sm={12} className="mt-3">
             <a
               href={`https://wa.me/6281320500045?text=Assalamualaikum min, saya ${name}. ${bodyEmail}`}

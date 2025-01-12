@@ -99,11 +99,20 @@ const StoreList = () => {
                           width: "100%",
                           objectFit: "fill",
                           maxHeight: 150,
+                          borderRadius: 4,
                         }}
                       />
                     )}
-                  <div style={{ textAlign: "right" }}>
-                    <b className="mb-2 text-muted font-sm">{store.owner}</b>
+                  <div
+                    className="d-flex align-items-center justify-content-end mt-2"
+                    style={{ textAlign: "right" }}
+                  >
+                    <i
+                      className="fa fa-user text-muted"
+                      style={{ fontSize: 10 }}
+                    ></i>
+                    &nbsp;
+                    <b className="text-muted font-sm">{store.owner}</b>
                   </div>
                 </Card.Body>
               </Card>

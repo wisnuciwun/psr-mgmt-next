@@ -64,12 +64,14 @@ const HomeCarousel = () => {
       {items.map((item, index) => (
         <Carousel.Item key={index} interval={2500} className="text-center">
           <div style={{ height: "300px", position: "relative", width: "100%" }}>
-            <Image
+            <img
+              style={{
+                height: "300px",
+                objectFit: "cover",
+                width: "100%",
+              }}
               src={item.image_url}
               alt={item.altText}
-              layout="fill"
-              objectFit="cover"
-              priority // Improves performance for above-the-fold images
             />
           </div>
         </Carousel.Item>

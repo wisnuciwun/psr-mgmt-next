@@ -44,10 +44,7 @@ export default function RootLayout({ children }) {
           href="/fontawesome/css/font-awesome.min.css"
           precedence="default"
         />
-        <link
-          rel="icon"
-          href="https://i.ibb.co.com/Brjm0Sm/Baraya-Swarga-logo-MQ-2.jpg"
-        />
+        <link rel="icon" href="https://barayaswarga.com/assets/favicon.ico" />
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} screen`}>

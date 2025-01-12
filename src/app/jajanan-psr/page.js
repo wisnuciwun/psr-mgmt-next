@@ -2,7 +2,6 @@ import StoreList from "@/components/StoreList";
 import React from "react";
 
 export const generateMetadata = async () => {
-  console.log("Generating metadata...");
   return {
     title: "Jajanan PSR",
     description:
