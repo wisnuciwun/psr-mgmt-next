@@ -9,6 +9,16 @@ function HomeNavbar(props) {
   const pagePosition = pathname;
   let expand = false;
 
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
+  const handleClose = () => setShowOffcanvas(false);
+  const handleShow = () => setShowOffcanvas(true);
+
+  const handleNavigation = (path) => {
+    nav.push(path);
+    handleClose(); // Close the offcanvas after navigation
+  };
+
   return (
     <div>
       <Navbar
@@ -21,6 +31,7 @@ function HomeNavbar(props) {
             style={{ border: "none" }}
             className="no-outline"
             aria-controls={`offcanvasNavbar-expand-${expand}`}
+            onClick={handleShow}
           />
           <div
             className="d-flex align-items-center"
@@ -32,6 +43,8 @@ function HomeNavbar(props) {
             placement="start"
             className="bg-primary-green"
             style={{ color: "white" }}
+            show={showOffcanvas}
+            onHide={handleClose}
           >
             <Offcanvas.Header
               className="d-flex justify-content-end"
@@ -43,7 +56,7 @@ function HomeNavbar(props) {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <div
-                  onClick={() => nav.push("/")}
+                  onClick={() => handleNavigation("/")}
                   className={`${
                     pagePosition === "/" && "bg-selected-menu"
                   } d-flex align-items-center p-2`}
@@ -54,7 +67,7 @@ function HomeNavbar(props) {
                   <span className="font-lg">Beranda</span>
                 </div>
                 <div
-                  onClick={() => nav.push("/jajanan-psr")}
+                  onClick={() => handleNavigation("/jajanan-psr")}
                   className={`${
                     pagePosition === "/jajanan-psr" && "bg-selected-menu"
                   } d-flex align-items-center p-2`}
@@ -68,7 +81,7 @@ function HomeNavbar(props) {
                   <span className="font-lg">Jajanan PSR</span>
                 </div>
                 <div
-                  onClick={() => nav.push("/struktur-organisasi")}
+                  onClick={() => handleNavigation("/struktur-organisasi")}
                   className={`${
                     pagePosition === "/struktur" && "bg-selected-menu"
                   } d-flex align-items-center p-2`}
@@ -79,7 +92,7 @@ function HomeNavbar(props) {
                   <span className="font-lg">Struktur Organisasi</span>
                 </div>
                 <div
-                  onClick={() => nav.push("/kontak")}
+                  onClick={() => handleNavigation("/kontak")}
                   className={`${
                     pagePosition === "/kontak" && "bg-selected-menu"
                   } d-flex align-items-center p-2`}

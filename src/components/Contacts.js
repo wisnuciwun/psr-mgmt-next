@@ -42,7 +42,7 @@ const Contacts = () => {
             />
           </Col>
         </FormGroup> */}
-        <FormGroup className="mb-2" row>
+        <FormGroup className="mb-2">
           <FormLabel className="mb-1" htmlFor="exampleName" sm={2}>
             Nama
           </FormLabel>

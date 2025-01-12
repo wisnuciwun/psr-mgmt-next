@@ -12,7 +12,6 @@ import {
 } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import request from "@/utils/request";
-import Head from "next/head";
 
 const StoreList = () => {
   const navigate = useRouter();
@@ -42,22 +41,6 @@ const StoreList = () => {
 
   return (
     <div className="container mt-2">
-      <Head>
-        <title>Jajanan PSR</title>
-        <meta
-          name="description"
-          content="Semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua ada."
-        />
-        <meta property="og:title" content="UMKM Prima Swarga Residence" />
-        <meta
-          property="og:description"
-          content="Semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua ada."
-        />
-        <meta
-          property="og:url"
-          content={`https://barayaswarga.com/jajanan-psr`}
-        />
-      </Head>
       <h1>Lapak Prima Swarga Residence</h1>
       <span className="mb-4 text-muted font-md">
         Ngga usah jauh-jauh keluar rumah, nggak usah pusing cari di internet.

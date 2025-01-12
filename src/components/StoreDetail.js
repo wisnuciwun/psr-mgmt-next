@@ -6,23 +6,6 @@ import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "next/navigation";
 import request from "@/utils/request";
 import ProductCarousel from "./ProductCarousel";
-import Head from "next/head";
-
-export async function getServerSideProps({ params }) {
-  const { slug } = params;
-  try {
-    const response = await request.get(`/store/${slug}`);
-    const store = response.data.data;
-
-    return {
-      props: { store },
-    };
-  } catch (error) {
-    return {
-      notFound: true,
-    };
-  }
-}
 
 const StoreDetail = () => {
   const { slug } = useParams(); // Get the store ID from the URL
@@ -49,7 +32,10 @@ const StoreDetail = () => {
 
   if (loading) {
     return (
-      <div className="text-center mt-4">
+      <div
+        className="text-center mt-4 d-flex align-items-center justify-content-center"
+        style={{ height: "100vh" }}
+      >
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
@@ -87,24 +73,6 @@ const StoreDetail = () => {
 
   return (
     <div className="container mt-4">
-      <Head>
-        <title>{store.store_name}</title>
-        <meta name="description" content={store.description} />
-        <meta property="og:title" content={store.store_name} />
-        <meta property="og:description" content={store.description} />
-        {store.product_images_url && (
-          <meta
-            property="og:image"
-            content={`https://wisnuadiwardhana.my.id/psr/img/${store.product_images_url
-              .split(",")[0]
-              .replace("public/images/", "")}`}
-          />
-        )}
-        <meta
-          property="og:url"
-          content={`https://barayaswarga.com/lapak/${store.slug}`}
-        />
-      </Head>
       <Card>
         <Card.Header>
           <h3>{store.store_name}</h3>
