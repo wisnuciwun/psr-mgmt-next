@@ -66,41 +66,42 @@ const StoreForm = () => {
       data = new FormData();
       Object.keys(formData).forEach((key) => data.append(key, formData[key]));
       images.forEach((image) => data.append("product_images[]", image)); // Add multiple images
-    } else if (images.length > 4) {
-      toast("Gambar terlalu banyak");
-      return;
     } else {
       data = formData;
     }
 
-    try {
-      const response = await axios.post(
-        "https://wisnuadiwardhana.my.id/psr/save-store",
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+    if (images.length <= 4) {
+      try {
+        const response = await axios.post(
+          "https://wisnuadiwardhana.my.id/psr/save-store",
+          data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        if (response.data.success) {
+          toast("Lapak berhasil dibuat!");
+          setFormData({
+            store_name: "",
+            owner: "",
+            address: "",
+            phone: "",
+            description: "",
+            tags: "",
+          });
+          setImages([]);
+          navigate.push(`/lapak/${response.data.data.slug}`);
         }
-      );
-      if (response.data.success) {
-        toast("Lapak berhasil dibuat!");
-        setFormData({
-          store_name: "",
-          owner: "",
-          address: "",
-          phone: "",
-          description: "",
-          tags: "",
-        });
-        setImages([]);
-        navigate.push(`/lapak/${response.data.data.slug}`);
+      } catch (error) {
+        toast("Terjadi kesalahan");
+        if (error.response && error.response.data.errors) {
+          setErrors(error.response.data.errors); // Capture validation errors from Laravel
+        }
       }
-    } catch (error) {
-      toast("Terjadi kesalahan");
-      if (error.response && error.response.data.errors) {
-        setErrors(error.response.data.errors); // Capture validation errors from Laravel
-      }
+    } else if (images.length > 4) {
+      toast("Maaf gambar terlalu banyak, ulangi upload gambar lagi");
     }
   };
 

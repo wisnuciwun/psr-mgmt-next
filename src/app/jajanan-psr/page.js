@@ -12,7 +12,7 @@ export const generateMetadata = async () => {
         "Semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua ada. Mau jajan apa hari ini?",
       images: [
         {
-          url: "https://i.ibb.co.com/68bjxNr/071894800-1608786362-Whats-App-Image-2020-12-24-at-07-58-53.jpg",
+          url: "https://i.ibb.co.com/HhM3kcf/071894800-1608786362-Whats-App-Image-2020-12-24-at-07-58-53.webp",
           width: 1200,
           height: 630,
           alt: "Jajanan PSR",

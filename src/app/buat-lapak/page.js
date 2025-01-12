@@ -10,7 +10,7 @@ export const generateMetadata = async () => {
       description: "Buat lapak online PSR mudah dan cepat",
       images: [
         {
-          url: "https://ibb.co.com/8BHZ7wT",
+          url: "https://i.ibb.co.com/jbkCXCS/gambar-toko-kelontong-dari-depan.webp",
           width: 1200,
           height: 630,
           alt: "Buat Lapak",
