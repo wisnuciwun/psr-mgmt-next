@@ -95,20 +95,42 @@ const StoreDetail = () => {
             {store.tags}
           </Card.Text>
           <hr />
-          <a
-            href={`https://api.whatsapp.com/send?phone=${store.phone}&text=Assalamu'alaikum kak ${store.owner}. Jualan kah hari ini? Saya mau pesan ...`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              fontWeight: "bold",
-              backgroundColor: "#36a054",
-            }}
-            className="btn w-100"
-          >
-            Pesan via Whatsapp
-          </a>
+          <div className="d-flex gap-2">
+            {/* Existing "Pesan via Whatsapp" Button */}
+            <a
+              href={`https://api.whatsapp.com/send?phone=${store.phone}&text=Assalamu'alaikum kak ${store.owner}. Jualan kah hari ini? Saya mau pesan ...`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                fontWeight: "bold",
+                backgroundColor: "#36a054",
+              }}
+              className="btn w-100"
+            >
+              Pesan via Whatsapp
+            </a>
+
+            {/* New "Share" Button */}
+            <a
+              href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+                `${window.location.href}\n${store.store_name}\n${store.description}`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                fontWeight: "bold",
+                backgroundColor: "#25d366", // WhatsApp's green color
+              }}
+              className="btn d-flex align-items-center"
+            >
+              <i className="fa fa-share">&nbsp;&nbsp;</i>
+              Share
+            </a>
+          </div>
         </Card.Body>
       </Card>
     </div>
