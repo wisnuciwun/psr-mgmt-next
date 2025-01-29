@@ -78,7 +78,7 @@ function HomeNavbar(props) {
                   >
                     &nbsp;
                   </i>
-                  <span className="font-lg">Jajanan PSR</span>
+                  <span className="font-lg">Lapak PSR</span>
                 </div>
                 <div
                   onClick={() => handleNavigation("/struktur-organisasi")}

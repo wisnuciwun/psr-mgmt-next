@@ -3,11 +3,11 @@ import React from "react";
 
 export const generateMetadata = async () => {
   return {
-    title: "Jajanan PSR",
+    title: "Lapak PSR",
     description:
       "Semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua ada. Mau jajan apa hari ini?",
     openGraph: {
-      title: "Jajanan PSR",
+      title: "Lapak PSR",
       description:
         "Semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua ada. Mau jajan apa hari ini?",
       images: [
@@ -15,7 +15,7 @@ export const generateMetadata = async () => {
           url: "https://i.ibb.co.com/HhM3kcf/071894800-1608786362-Whats-App-Image-2020-12-24-at-07-58-53.webp",
           width: 1200,
           height: 630,
-          alt: "Jajanan PSR",
+          alt: "Lapak PSR",
         },
       ],
       url: "https://barayaswarga.com/jajanan-psr",

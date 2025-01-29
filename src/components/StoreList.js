@@ -41,7 +41,7 @@ const StoreList = () => {
 
   return (
     <div className="container mt-2">
-      <h4>Lapak Prima Swarga Residence</h4>
+      <h4>Lapak PSR</h4>
       <span className="mb-4 text-muted font-md">
         Ngga usah jauh-jauh keluar rumah, nggak usah pusing cari di internet.
         Disini, semua insyaAllah ada! Mulai dari sandang, pangan dan papan semua
@@ -101,7 +101,7 @@ const StoreList = () => {
                             .replace("public/images/", "")}`}
                           style={{
                             width: "100%",
-                            objectFit: "fill",
+                            objectFit: "scale-down",
                             maxHeight: 150,
                             borderRadius: 4,
                           }}

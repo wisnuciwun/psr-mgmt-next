@@ -1,12 +1,16 @@
 import StoreDetail from "@/components/StoreDetail";
 import request from "@/utils/request";
+import axios from "axios";
 import React from "react";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   try {
-    const response = await request.get(`/store/${slug}`);
+    const response = await axios.get(
+      `https://wisnuadiwardhana.my.id/psr/store/${slug}`
+    );
     const store = response.data.data;
+    console.log("masuk", slug, response.data.data.store_name);
 
     return {
       title: store.store_name,
@@ -21,7 +25,7 @@ export async function generateMetadata({ params }) {
               .replace("public/images/", "")}`,
             width: 1200,
             height: 630,
-            alt: "Jajanan PSR",
+            alt: "Lapak PSR",
           },
         ],
         url: `https://barayaswarga.com/lapak/${store.slug}`,
@@ -29,6 +33,7 @@ export async function generateMetadata({ params }) {
       },
     };
   } catch (error) {
+    console.log("error", error);
     return {
       notFound: true,
     };
