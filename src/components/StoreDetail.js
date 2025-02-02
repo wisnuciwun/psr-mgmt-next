@@ -111,11 +111,11 @@ const StoreDetail = () => {
             >
               Pesan via Whatsapp
             </a>
-
-            {/* New "Share" Button */}
             <a
               href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
-                `${window.location.href}\n\n${store.store_name}\n\n${store.description}`
+                `${
+                  typeof window !== "undefined" ? window.location.href : ""
+                }\n\n${store.store_name}\n\n${store.description}`
               )}`}
               target="_blank"
               rel="noopener noreferrer"
