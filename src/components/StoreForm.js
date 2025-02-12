@@ -2,13 +2,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import imageCompression from "browser-image-compression";
 import {
   Form,
   FormGroup,
   FormLabel,
   FormControl,
   Button,
-  Alert,
   Spinner,
 } from "react-bootstrap";
 import { useRouter } from "next/navigation";
@@ -23,96 +23,89 @@ const StoreForm = () => {
     phone: "",
     description: "",
     tags: "",
-    product_images: null,
   });
   const [loading, setloading] = useState(false);
-
   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState({});
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
-    let valueData = value;
-
-    if (name == "address") {
-      valueData = value?.toUpperCase();
-    }
-
-    setFormData({ ...formData, [name]: valueData });
+    setFormData({
+      ...formData,
+      [name]: name === "address" ? value.toUpperCase() : value,
+    });
   };
 
-  const handleFileChange = (e) => {
-    setImages([...e.target.files]); // Store selected files in an array
+  const handleFileChange = async (e) => {
+    const files = Array.from(e.target.files);
+    const compressedImages = await Promise.all(
+      files.map(async (file) => {
+        const options = {
+          maxSizeMB: 0.4,
+          maxWidthOrHeight: 800,
+          useWebWorker: true,
+        };
+        try {
+          setloading(true);
+          return await imageCompression(file, options);
+        } catch (error) {
+          console.error("Image compression error:", error);
+          return file;
+        }
+      })
+    );
+    console.log("image_compressed", compressedImages.length);
+    setloading(false);
+    setImages(compressedImages);
   };
 
   const handleReset = () => {
     setImages([]);
-    setFormData((prev) => ({
-      ...prev,
-      product_images: null,
-    }));
-
-    // Reset the file input value
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-    }
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
     let data = new FormData();
+    Object.keys(formData).forEach((key) => data.append(key, formData[key]));
+    images.forEach((image) => data.append("product_images[]", image));
 
-    if (images.length != 0) {
-      data = new FormData();
-      Object.keys(formData).forEach((key) => data.append(key, formData[key]));
-      images.forEach((image) => data.append("product_images[]", image)); // Add multiple images
-    } else {
-      data = formData;
+    if (images.length > 4) {
+      toast("Maaf gambar terlalu banyak, ulangi upload gambar lagi");
+      return;
     }
 
-    if (images.length <= 4) {
-      try {
-        setloading(true);
-        const response = await axios.post(
-          "https://wisnuadiwardhana.my.id/psr/save-store",
-          data,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        if (response.data.success) {
-          setloading(false);
-          toast("Lapak berhasil dibuat!");
-          setFormData({
-            store_name: "",
-            owner: "",
-            address: "",
-            phone: "",
-            description: "",
-            tags: "",
-          });
-          setImages([]);
-          navigate.push(`/lapak/${response.data.data.slug}`);
-        }
-      } catch (error) {
-        setloading(false);
-        toast(
-          `Terjadi kesalahan ${
-            error.response.data.error
-              ? error.response.data.error.substring(0, 75)
-              : ""
-          }`
-        );
-        if (error.response && error.response.data.errors) {
-          setErrors(error.response.data.errors); // Capture validation errors from Laravel
-        }
+    try {
+      setloading(true);
+      const response = await axios.post(
+        "https://wisnuadiwardhana.my.id/psr/save-store",
+        data,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+      if (response.data.success) {
+        toast("Lapak berhasil dibuat!");
+        setFormData({
+          store_name: "",
+          owner: "",
+          address: "",
+          phone: "",
+          description: "",
+          tags: "",
+        });
+        setImages([]);
+        navigate.push(`/lapak/${response.data.data.slug}`);
       }
-    } else if (images.length > 4) {
-      toast("Maaf gambar terlalu banyak, ulangi upload gambar lagi");
+    } catch (error) {
+      toast(
+        `Terjadi kesalahan ${
+          error.response?.data?.error?.substring(0, 75) || ""
+        }`
+      );
+      if (error.response?.data?.errors) setErrors(error.response.data.errors);
+    } finally {
+      setloading(false);
     }
   };
 
