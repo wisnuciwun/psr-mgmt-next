@@ -6,6 +6,9 @@ import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "next/navigation";
 import request from "@/utils/request";
 import ProductCarousel from "./ProductCarousel";
+import { Button, Form, Modal } from "react-bootstrap";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 const StoreDetail = () => {
   const { slug } = useParams(); // Get the store ID from the URL
@@ -13,6 +16,7 @@ const StoreDetail = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [activeIndex, setactiveIndex] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     // Fetch store details from the API
@@ -73,6 +77,7 @@ const StoreDetail = () => {
 
   return (
     <div className="container mt-4">
+      <Toaster />
       <Card>
         <Card.Header>
           <h3>{store.store_name}</h3>
@@ -88,8 +93,29 @@ const StoreDetail = () => {
             ))}
           </Card.Text>
           <hr />
-          <Card.Text className="font-md">
-            Diposting oleh <strong> {store.owner} </strong> ({store.address})
+          <Card.Text className="font-md d-flex justify-content-between align-items-center">
+            <span>
+              Diposting oleh <strong> {store.owner} </strong> ({store.address})
+            </span>
+            <Button
+              onClick={() => {
+                // {store.description}
+                router.push(`/edit-lapak/${store.slug}`);
+              }}
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "none",
+                fontWeight: "bold",
+                fontSize: 14,
+                width: "fit-content",
+              }}
+              className="btn btn-light"
+            >
+              <span style={{ textAlign: "center" }}>
+                <i className="fa fa-pencil">&nbsp;&nbsp;</i>
+                Edit Postingan
+              </span>
+            </Button>
           </Card.Text>
           <Card.Text className="font-md" style={{ marginTop: -10 }}>
             {store.tags}
