@@ -245,7 +245,7 @@ const StoreForm = () => {
             required
             onChange={handleChange}
             isInvalid={!!errors.phone}
-            maxLength={14}
+            maxLength={20}
             placeholder="Contoh: 081298698252"
           />
           <FormControl.Feedback type="invalid">
