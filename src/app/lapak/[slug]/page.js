@@ -1,7 +1,7 @@
 import StoreDetail from "@/components/StoreDetail";
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   try {
     const response = await fetch(
