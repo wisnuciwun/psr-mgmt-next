@@ -99,7 +99,7 @@ const SearchKK = () => {
                 />
                 <Card.Text>Blok: {item.blok}</Card.Text>
                 <Button
-                  variant="primary"
+                  variant="success"
                   className="w-100 mt-2"
                   onClick={() =>
                     downloadImage(
@@ -112,6 +112,26 @@ const SearchKK = () => {
                   disabled={!item.kk_path}
                 >
                   Download
+                </Button>
+                <Button
+                  variant="primary"
+                  className="w-100 mt-2"
+                  onClick={() => {
+                    let url = `https://wisnuadiwardhana.my.id/psr/img/${item.kk_path
+                      .split(",")[0]
+                      .replace("public/images/", "")}`;
+                    navigator.clipboard
+                      .writeText(url)
+                      .then(() => {
+                        toast.success("URL copied to clipboard!");
+                      })
+                      .catch(() => {
+                        toast.error("Failed to copy URL.");
+                      });
+                  }}
+                  disabled={!item.kk_path}
+                >
+                  Copy URL
                 </Button>
               </Card.Body>
             </Card>
