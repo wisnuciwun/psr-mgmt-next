@@ -15,10 +15,11 @@ const IdentityForm = ({ onSubmit }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value ? value.toUpperCase() : "",
-    });
+    console.log("Input Value:", value); // Debugging
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value.toUpperCase(),
+    }));
   };
 
   const handleFileChange = async (e) => {
