@@ -15,11 +15,7 @@ const IdentityForm = ({ onSubmit }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("Input Value:", value); // Debugging
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value.toUpperCase(),
-    }));
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleFileChange = async (e) => {
@@ -110,8 +106,13 @@ const IdentityForm = ({ onSubmit }) => {
           <Form.Control
             type="text"
             name="nama"
-            value={formData.nama || ""}
+            value={formData.nama}
             onChange={handleChange}
+            onBlur={() =>
+              handleChange({
+                target: { name: "nama", value: formData.nama.toUpperCase() },
+              })
+            }
             placeholder="Masukkan Nama"
             required
           />
