@@ -110,7 +110,7 @@ const IdentityForm = ({ onSubmit }) => {
           <Form.Control
             type="text"
             name="nama"
-            value={formData.nama}
+            value={formData.nama || ""}
             onChange={handleChange}
             placeholder="Masukkan Nama"
             required
