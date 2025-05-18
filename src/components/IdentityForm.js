@@ -12,6 +12,18 @@ const IdentityForm = ({ onSubmit }) => {
     blok: "",
     fotoKK: null,
   });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [inputPassword, setInputPassword] = useState("");
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    const correctPassword = "psr#2025";
+    if (inputPassword === correctPassword) {
+      setIsAuthenticated(true);
+    } else {
+      toast.error("Password salah!");
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -98,65 +110,88 @@ const IdentityForm = ({ onSubmit }) => {
   return (
     <Container className="mt-4">
       <Toaster />
-      <h4 className="mb-3">Form Kartu Keluarga</h4>
-      <Form onSubmit={handleSubmit}>
-        {/* Nama */}
-        <Form.Group className="mb-3">
-          <Form.Label>Nama Kepala Keluarga</Form.Label>
-          <Form.Control
-            type="text"
-            name="nama"
-            value={formData.nama}
-            onChange={handleChange}
-            onBlur={() =>
-              handleChange({
-                target: { name: "nama", value: formData.nama.toUpperCase() },
-              })
-            }
-            placeholder="Masukkan Nama"
-            required
-          />
-        </Form.Group>
-
-        {/* Blok */}
-        <Form.Group className="mb-3">
-          <Form.Label>Blok</Form.Label>
-          <Form.Control
-            type="text"
-            name="blok"
-            value={formData.blok}
-            onChange={handleChange}
-            placeholder="Masukkan Blok"
-            required
-          />
-        </Form.Group>
-
-        {/* Upload Foto KK */}
-        <Form.Group className="mb-3">
-          <Form.Label>Upload Foto KK</Form.Label>
-          <Form.Control
-            type="file"
-            accept="image/*"
-            capture="environment"
-            onChange={handleFileChange}
-            required
-          />
-        </Form.Group>
-
-        {/* Submit Button */}
-        <Button
-          disabled={loading}
-          variant="primary"
-          className="w-100 btn-primary-yellow mt-3"
-          type="submit"
+      {!isAuthenticated ? (
+        <Form
+          onSubmit={handlePasswordSubmit}
+          style={{ maxWidth: 400, margin: "100px auto" }}
         >
-          {loading ? (
-            <Spinner size="sm" style={{ color: "white" }} />
-          ) : (
-            "Submit"
-          )}
-        </Button>
-      </Form>
+          <h4 className="text-center mb-3">Masukkan Password</h4>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={inputPassword}
+            onChange={(e) => setInputPassword(e.target.value)}
+          />
+          <Button type="submit" className="w-100 mt-3 btn-primary-yellow">
+            Masuk
+          </Button>
+        </Form>
+      ) : (
+        <>
+          <h4 className="mb-3">Form Kartu Keluarga</h4>
+          <Form onSubmit={handleSubmit}>
+            {/* Nama */}
+            <Form.Group className="mb-3">
+              <Form.Label>Nama Kepala Keluarga</Form.Label>
+              <Form.Control
+                type="text"
+                name="nama"
+                value={formData.nama}
+                onChange={handleChange}
+                onBlur={() =>
+                  handleChange({
+                    target: {
+                      name: "nama",
+                      value: formData.nama.toUpperCase(),
+                    },
+                  })
+                }
+                placeholder="Masukkan Nama"
+                required
+              />
+            </Form.Group>
+
+            {/* Blok */}
+            <Form.Group className="mb-3">
+              <Form.Label>Blok</Form.Label>
+              <Form.Control
+                type="text"
+                name="blok"
+                value={formData.blok}
+                onChange={handleChange}
+                placeholder="Masukkan Blok"
+                required
+              />
+            </Form.Group>
+
+            {/* Upload Foto KK */}
+            <Form.Group className="mb-3">
+              <Form.Label>Upload Foto KK</Form.Label>
+              <Form.Control
+                type="file"
+                accept="image/*"
+                capture="environment"
+                onChange={handleFileChange}
+                required
+              />
+            </Form.Group>
+
+            {/* Submit Button */}
+            <Button
+              disabled={loading}
+              variant="primary"
+              className="w-100 btn-primary-yellow mt-3"
+              type="submit"
+            >
+              {loading ? (
+                <Spinner size="sm" style={{ color: "white" }} />
+              ) : (
+                "Submit"
+              )}
+            </Button>
+          </Form>
+        </>
+      )}
     </Container>
   );
 };
